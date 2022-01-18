@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ItadakiFood</title>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/navbar.css">
+</head>
+<body>
+    <img src="assets/background.jpg" alt="background image" id="backgroundImg">
+    <div id="backgroundDim"></div>
+    <div w3-include-html="navbar.html"></div>
+    <div class="searchDivDiv">
+        <form class="searchDiv">
+            <input type="text" class="searchbar" placeholder="Search for a restaurant">
+            <a onclick="goToRestaurants()" class="searchBtn"><img src="assets/icons8-search-480.png"class="searchImg"></a>
+        </form>
+    </div>
+    <script>
+        w3.includeHTML();
+    </script>
+    <script src="js/search.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+.body {
+    background: black;
+}
+.resBackground {
+    background: linear-gradient(#575757, black);
+    height: 50vh;
+    position: absolute;
+    top: 0;
+    z-index: 0;
+    width: 100%;
+}
+.searchbar {
+    z-index: 1;
+}
+.searchDiv {
+    margin-top: 7.5vh;
+}
+.Table {
+    position: relative;
+    width: 50%;
+}
+.card-deck {
+    margin-bottom: 10vh;
+}
+.resList {
+    padding: 0;
+    list-style: none;
+}
+.bodyContainer {
+    display: flex;
+    margin-top: 10vh;
+}
+.Table, .filterNSort {
+    margin: 0 auto;
+}
+.filterNSort {
+    color: white;
+    padding: 2vh 2vw;
+    z-index: 2;
+}
+hr {
+    background: white;
+}
+.FilterTitle {
+    color: white;
+    margin-bottom: 1vh; 
+}
+.filterLabel {
+    margin: 0;
+    margin-left: 1vw;
+}
+.filterList {
+    list-style: none;
+    padding: 0;
+    margin-top: 1vh;
+}
+.filters {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1vh;
+}

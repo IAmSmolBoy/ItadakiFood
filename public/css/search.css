@@ -1,0 +1,38 @@
+
+.searchbar {
+    border-radius: 100px;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    width: 45vw;
+    height: 5vh;
+    font-size: 1.25rem;
+    border-width: 0;
+}
+.searchDiv {
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+input::-webkit-input-placeholder {
+    font-size: 1.25rem;
+    line-height: 2;
+    position: absolute;
+    top: 0.5vh;
+}
+.searchImg {
+    position: relative;
+    z-index: 3;
+    width: 3vh;
+}
+.searchBtn {
+    position: absolute;
+    float: right;
+    right: 1vw;
+    height: 3vh;
+}
+.searchBtn:hover {
+    cursor: pointer;
+}
