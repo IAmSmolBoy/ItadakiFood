@@ -1,3 +1,5 @@
+CREATE DATABASE  IF NOT EXISTS `itadakifood` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `itadakifood`;
 -- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
 --
 -- Host: localhost    Database: itadakifood
@@ -27,8 +29,9 @@ CREATE TABLE `assets` (
   `restaurantId2` int NOT NULL,
   `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`_id`),
+  UNIQUE KEY `image_UNIQUE` (`image`),
   KEY `restaurantId_idx` (`restaurantId2`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=45 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +40,7 @@ CREATE TABLE `assets` (
 
 LOCK TABLES `assets` WRITE;
 /*!40000 ALTER TABLE `assets` DISABLE KEYS */;
-INSERT INTO `assets` VALUES (7,1,'macs.jpg'),(8,20,'A-Roy-Thai.jpg'),(9,20,'a-Roy-Thai food.jpg'),(10,17,'Volare food.jpg');
+INSERT INTO `assets` VALUES (7,1,'macs.jpg'),(8,20,'A-Roy-Thai.jpg'),(9,20,'a-Roy-Thai food.jpg'),(10,17,'Volare food.jpg'),(12,3,'shake shack.jpg');
 /*!40000 ALTER TABLE `assets` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-01-09 23:09:40
+-- Dump completed on 2022-01-28  4:19:28

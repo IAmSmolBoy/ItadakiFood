@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/userInfo.css">
+    <link rel="stylesheet" href="css/background.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script defer src="js/navbar.js"></script>
+    <script defer src="js/userInfo.js"></script>
+</head>
+<body>
+    <img id="backgroundImg" src="https://img.wallpapersafari.com/desktop/1280/1024/71/43/WGP7OI.png" alt="background">
+    <div id="backgroundDim"></div>
+    <div class="navbarContainer" w3-include-html="navbar.html"></div>
+    <main id="userInfoContent">
+        <h2 id="Hi">Hello there, </h2>
+        <section id="profileInfoDisplay" >
+            <div class="userInfoSec" id="pfpImgSec">
+                <div id="profileImgContainer">
+                    <img src="assets/default pfp.png" alt="proflie pic" id="profileImg">
+                </div>
+            </div>
+            <div class="userInfoSec" id="profileDetails">
+                <div id="detailsDiv">
+                    <h4 id="profileUsername" class="profileDetail">Username: </h4>
+                    <h4 id="profileGender" class="profileDetail">Gender: </h4>
+                    <h4 id="profileAddress" class="profileDetail">Address: </h4>
+                    <h4 id="profileNumber" class="profileDetail">Mobile Number: </h4>
+                    <h4 id="profileEmail" class="profileDetail">Email: </h4>
+                </div>
+                <div id="detailDim"></div>
+            </div>
+        </section>
+        <section id="profileBtns">
+            <a href="editUserInfo.html" class="profileBtn btn btn-light" id="edit">Edit Profile</a>
+            <button data-toggle="modal" data-target="#deleteAcc" class="profileBtn btn btn-danger" id="delete">Delete Account</button>
+        </section>
+    </main>
+    <div class="modal fade" id="deleteAcc" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm " role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete your account</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                <div class="modal-body px-5">
+                    <span id="delMsg">Type delete in the input box below to confirm this action</span>
+                    <form id="delForm">
+                        <input type="text" id="deleteInput">
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" id="deleteBtn" disabled>Delete</button>
+                </div>
+                </div>
+            </div>    
+        </div>
+    </div>
+    <script>w3.includeHTML();</script>
+</body>
+</html>

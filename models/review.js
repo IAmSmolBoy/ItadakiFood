@@ -1,6 +1,6 @@
 "use strict"
 class review {
-    constructor (id, review, rating, date, title, likes = 0, restaurantId = 0, userId = 0, username = "") {
+    constructor (id, review, rating, date, title, restaurantId = 0, userId = 0, username = "", likes = 0) {
         this.id = id
         this.restaurantId = restaurantId
         this.userId = userId

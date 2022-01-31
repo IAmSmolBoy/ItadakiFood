@@ -7,10 +7,20 @@
     position: absolute;
     top: 0;
     z-index: 0;
+    opacity: 70%;
     width: 100%;
 }
+#navbar {
+    z-index: 4;
+}
+#navBackground {
+    z-index: 3;
+}
+#Logo {
+    z-index: 3;
+}
 .searchbar {
-    z-index: 1;
+    z-index: 3;
 }
 .searchDiv {
     margin-top: 7.5vh;
@@ -26,14 +36,26 @@
     padding: 0;
     list-style: none;
 }
+.resName {
+    transition: .3s;
+    color: black;
+    font-weight: bold;
+}
+.resName:hover {
+    color: #007bff;
+    cursor: pointer;
+}
 .bodyContainer {
     display: flex;
     margin-top: 10vh;
 }
-.Table, .filterNSort {
+.Table, .filterNSortDiv {
     margin: 0 auto;
+    z-index: 3;
 }
 .filterNSort {
+    position: sticky;
+    top: 5vh;
     color: white;
     padding: 2vh 2vw;
     z-index: 2;
@@ -58,4 +80,27 @@ hr {
     display: flex;
     align-items: center;
     margin-bottom: 1vh;
+}
+.sortList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.sortBy {
+    width: max-content;
+}
+.sortBtn {
+    background: none;
+    color: white;
+    border: none;
+}
+.selected {
+    font-weight: bold;
+}
+.sortBtn:focus {
+    border: none;
+    outline: none;
+}
+.resBtns {
+    margin-top: 1vh;
 }

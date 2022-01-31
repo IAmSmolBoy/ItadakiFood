@@ -1,9 +1,11 @@
 <div id="nav">
     <nav id="navbar">
         <ul id="navList">
-            <li class="navItem left"><a href="restaurants.html" class="navLink">Restaurants</a></li>
-            <li class="navItem"><a href="register.html" class="navLink">Register</a></li>
-            <li class="navItem"><a href="login.html" class="navLink">Sign In</a></li>
+            <li class="navItem left" id="restaurantsLi"><a href="restaurants.html" class="navLink" id="restaurants">Restaurants</a></li>
+            <li class="navItem" id="register"><a href="register.html" class="navLink">Register</a></li>
+            <li class="navItem" id="login"><a href="login.html" class="navLink">Sign In</a></li>
+            <li class="navItem gone" id="profile"><a href="userInfo.html" class="navLink" id="profileLink"><div id="pfpContainerDiv"><div id="pfpContainer"><img id="pfp" src="assets/default pfp.png" alt="pfp"></div></div><span id="usernameProfileLink">Username</span></a></li>
+            <li class="navItem gone" id="logOut"><a href="#" class="navLink" onclick="logOut()">Log Out</a></li>
         </ul>
     </nav>
     <div id="navBackground"></div>

@@ -1,0 +1,4 @@
+{
+    "appService.deploySubpath": ".",
+    "appService.defaultWebAppToDeploy": "/subscriptions/8d49325a-16d7-415d-a397-8d7dd814a95b/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/ItadakiFood"
+}

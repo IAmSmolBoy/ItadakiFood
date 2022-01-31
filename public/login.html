@@ -4,9 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Login</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script defer src="./js/register.js"></script>
+    <script defer src="./js/login.js"></script>
 </head>
 <body>
-    
+    <div class="navbarContainer" w3-include-html="navbar.html"></div>
+    <div class="background">
+        <img src="https://www.sentosa.com.sg/-/media/sentosa/article-listing/articles/10-most-romantic-restaurants-in-sentosa/oceantipsgallery.jpg?revision=76e71c30-c6cd-46dd-962a-307425538701" alt="background" class="backgroundImg">
+        <div class="dim"></div>
+    </div>
+    <div class="modal fade" id="wrong" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-sm " role="document">
+            <div class="modal-content">
+                <div class="modal-body px-5">
+                    <span id="message">Incorrect username or password</span>
+                        <button type="button" id="closeBtn" class="btn btn-dark" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <form id="loginForm">
+        <div class="inputContainer">
+            <input type="text" placeholder="Username" name="username" id="username" class="userInput" required>
+            <input type="password" placeholder="Password" name="password" id="password" class="userInput password" required>
+            <h4 id="forgetPassH4">Forgot your password? Click <a data-toggle="modal" data-target="#forgetPass" data-dismiss="modal" id="forgetPassLink">here</a></h4>
+            <div id="showPassContainer">
+                <label id="showPassLabel">Show Password<input type="checkbox" id="showPassInput"></label>
+            </div>
+        </div>
+        <input type="submit" id="submitBtn">
+    </form>
+    <div id="forgetPass" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Forgot your Password?</h3>
+                    <button type="button" id="closeXBtn" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <ol id="stepList">
+                        <li class="step">Enter your email.</li>
+                        <li class="step">An email will be sent to you.</li>
+                        <li class="step">Click the link in the email, it should bring you to the rest password page.</li>
+                        <li class="step">Reset your password and have a nice day. :)</li>
+                    </ol>
+                    <form id="resetPassForm">
+                        <label for="email" id="emailLabel">Enter your email: <input type="email" name="email" id="emailInput"></label>
+                        <input type="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
+    <script>w3.includeHTML();</script>
 </body>
 </html>

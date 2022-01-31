@@ -1,0 +1,118 @@
+#Logo {
+    z-index: 1;
+}
+#navbar {
+    z-index: 1;
+}
+#navBackground {
+    z-index: 0;
+}
+div#backgroundDim {
+    z-index: -1;
+}
+img#backgroundImg {
+    z-index: -1;
+}
+body {
+    display: flex;
+}
+
+.userForm {
+    width: max-content;
+    height: max-content;
+    margin: auto;
+    display: flex;
+}
+.pfpUpload {
+    display: flex;
+    flex-direction: column;
+}
+.pfpInput {
+    color: white;
+    margin: 0 auto;
+}
+.pfpImg {
+    position: absolute;
+    border-radius: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.pfpContainer {
+    position: relative;
+    padding-bottom: 100%;
+}
+.inputSec {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+.topSec {
+    flex-direction: row;
+}
+.selections, label.showPass {
+    color: white;
+    margin: 1vh 0;
+    display: flex;
+    margin-left: 2vw;
+    font-size: 1.25rem;
+}
+#showPassInput {
+    margin: auto 0;
+}
+.genderRadio, #showPassInput, .genderLabel {
+    margin-left: 0.5vw;
+}
+label.genderLabel, .gender {
+    margin-bottom: 0;
+}
+input::-webkit-input-placeholder {
+    font-size: 1.25rem;
+    line-height: 2;
+    position: relative;
+    margin: auto 0;
+}
+.userInfo {
+    margin: 1vh 1vw;
+    width: 30vw;
+    height: 7.5vh;
+    padding-left: 1vw;
+    border-radius: 100px;
+}
+.inputColumn {
+    display: flex;
+    flex-direction: column;
+}
+.bottomSec input.userInfo {
+    width : 62vw;
+}
+.submitDiv {
+    margin: 1vh 2vw 0 auto;
+    width: max-content;
+    font-size: 1.25rem;
+}
+.submitBtn {
+    border-radius: 10px;
+    padding: 1vh 1vw;
+    background: black;
+    border: none;
+    background-image: linear-gradient(white, white 50%, black 50%, black);
+    background-size: 100% 200%;
+    transition: .3s;
+}
+.submitBtn:hover {
+    color: white;
+    background-position: 0 -101%;
+    cursor: pointer
+}
+.loginTag {
+    color: white;
+    margin-left: 1vw;
+}
+.loginLink {
+    color: #8AB4F8;
+    transition: .3s;
+}
+.loginLink:hover {
+    color: white;
+}

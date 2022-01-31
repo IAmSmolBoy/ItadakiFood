@@ -4,9 +4,114 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Restaurant Info</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png">
+    <link rel="manifest" href="./assets/site.webmanifest">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="./css/resInfo.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script defer src="./js/resInfo.js"></script>
+    <script defer src="./js/navbar.js"></script>
 </head>
 <body>
-    
+    <div id="backgroundContainer">
+        <img src="http://cdn.cnn.com/cnnnext/dam/assets/200120161356-cnn-worlds-best-new-restaurants---madera---simon-brown-photography-1-1.jpg" alt="background" id="background">
+        <div id="dim"></div>
+    </div>
+    <div class="navbarContainer">
+        <div id="nav">
+            <nav id="navbar">
+                <ul id="navList">
+                    <li class="navItem left" id="restaurantsLi"><a href="restaurants.html" class="navLink" id="restaurants">Restaurants</a></li>
+                    <li class="navItem" id="register"><a href="register.html" class="navLink">Register</a></li>
+                    <li class="navItem" id="login"><a href="login.html" class="navLink">Sign In</a></li>
+                    <li class="navItem gone" id="profile"><a href="userInfo.html" class="navLink" id="profileLink"><div id="pfpContainerDiv"><div id="pfpContainer"><img id="pfp" src="" alt="pfp"></div></div><span id="usernameProfileLink">Username</span></a></li>
+                    <li class="navItem gone" id="logOut"><a href="#" class="navLink" onclick="logOut()">Log Out</a></li>
+                </ul>
+            </nav>
+            <div id="navBackground"></div>
+        </div>
+        <a href="index.html" class="LogoLink"><h2 id="Logo"><span>Itadaki</span>Food</h2></a>
+    </div>
+    <main id="restaurantContents">
+        <section class="resSec" id="gallery">
+            <h2 id="noImages">Wow, Such Empty</h2>
+        </section>
+        <section class="resSec" id="restaurantDetails">
+            <h2 id="resName">Restaurant Name</h2>
+            <h4 class="resInfo" id="cuisine">cuisine</h4>
+            <h4 class="resInfo" id="Location">Location</h4>
+            <h4 class="resInfo" id="OperatingHours">Operating Hours</h4>
+        </section>
+        <section id="ratingNLoc">
+            <div id="stars">
+                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+            </div>
+            <div id="ratingNumContainer">
+                <h4 id="ratingNum"></h4>
+                <div id="starContainer"><img src="./assets/icons8-star-selected.png" alt="star" id="starIcon"></div>
+            </div>
+            <div id="reviewNumContainer">
+                <h4 id="reviewNum"></h4>
+            </div>
+            <div id="mapContainer">
+                <h2 id="directions">Directions</h2>
+                <div id="mapDiv"><iframe id="map" loading="lazy" allowfullscreen></iframe></div>
+                <h4 id="Loc"></h4>
+            </div>
+        </section>
+        <section id="reviewSec">
+            <h2 id="reviewHeader">Reviews</h2>
+            <button id="addReview" class="btn btn-light" data-toggle="modal" data-target="#newComment" data-dismiss="modal">Add a Review</button>
+            <div id="displayReviews">
+            </div>
+        </section>
+    </main>
+    <div id="newComment" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Add Review</h3>
+                    <button type="button" id="closeBtn" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <form action="/addReviews" method="post" id="newCommentForm">
+                        <input type="text" class="reviewInput" placeholder="Title" name="title" required id="title">
+                        <input type="text" class="reviewInput" placeholder="Review" name="review" required id="review">
+                        <div id="starRatingsNSubmit">
+                            <div id="ratingStarInputContainer"></div>
+                            <input type="submit" id="newCommentSubmit" class="btn btn-dark">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="signInModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Sign In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>This function is only accessible when signed in.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
