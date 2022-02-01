@@ -4,7 +4,7 @@ var connection = mysql.createConnection({
     port: ":)",
     user: ":)",
     password: ":)",
-    database: "itadakifood"
+    database: ":)"
 })
 connection.connect(err => {
     if (err) throw err

@@ -2,7 +2,6 @@
 const ResDB = require("../models/RestaurantsDB")
 const Restaurant = require("../models/restaurant")
 const MulterConfig = require("../models/multerMiddleware/multerSettings")
-const e = require("express")
 var resDB = new ResDB()
 
 function getAllRestaurants(request, respond) {

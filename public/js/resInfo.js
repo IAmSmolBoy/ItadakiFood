@@ -105,7 +105,7 @@ getResReviews.onload = function() {
             if (i < reviews.length - 1) $(`#review${idx}`).append(`<hr>`)
             else $("#displayReviews").append(`<br>`)
             for (j = 0 ; j < reviews[i].rating; j++) document.getElementsByClassName("ratingStarImgs")[idx].innerHTML += '<img src="./assets/icons8-star-selected.png" alt="star" class="reviewStarImg">'
-            for (j = reviews[i].rating; j < 5; j++) document.getElementsByClassName("ratingStarImgs")[idx].innerHTML += '<img src="./assets/icons8-star-96-white.png" alt="star" class="reviewStarImg">'
+            for (j = reviews[i].rating; j < 5; j++) document.getElementsByClassName("ratingStarImgs")[idx].innerHTML += '<img src="./assets/icons8-star-96.png" alt="star" class="reviewStarImg">'
             idx++
         }
         if (reviews[i].userId2 === parseInt(sessionStorage.getItem("userId"))) {

@@ -1,32 +1,43 @@
-var express = require("express")
+var express = require('express');
+var path = require('path');
+var cookieParser = require('cookie-parser');
+var logger = require('morgan');
 var resController = require("./controllers/restaurantController")
 var reviewController = require("./controllers/reviewController")
 var userController = require("./controllers/userController")
-var app = express()
 
-app.use(express.static("./public"))
-app.use(express.json())
+var indexRouter = require('./routes/index');
 
-app.route("/getRestaurants").get(resController.getAllRestaurants)
-app.route("/getResInfo/:id").get(resController.getResInfo)
-app.route("/getResImages/:id").get(resController.getResImages)
-app.route("/addRestaurants").post(resController.postRestaurant)
-app.route("/uploadImages").post(resController.storeImage)
-app.route("/getResReviews/:id").get(reviewController.getResReviews)
-app.route("/addReviews").post(reviewController.postReview)
-app.route("/editReviews/:id").put(reviewController.editReview)
-app.route("/deleteReviews/:id").delete(reviewController.deleteReview)
-app.route("/getAllLikes").get(reviewController.getAllLikes)
-app.route("/likeReview").post(reviewController.likeReview)
-app.route("/removeLike").delete(reviewController.removeLike)
-app.route("/getAllUsers").get(userController.getAllUsers)
-app.route("/getUserInfo/:id").get(userController.getUserInfo)
-app.route("/login").post(userController.login)
-app.route("/addUsers").post(userController.postUser)
-app.route("/editProfile/:id").post(userController.editUser)
-app.route("/getResetLink").post(userController.getResetLink)
-app.route("/resetPassword/:id").put(userController.resetPassword)
-app.route("/deleteUser/:id").delete(userController.deleteUser)
+var app = express();
 
-app.listen(8080, "127.0.0.1")
-console.log("web server running @ http://127.0.0.1:8080")
+app.use(logger('dev'));
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', indexRouter);
+
+
+app.get("/getRestaurants", resController.getAllRestaurants)
+app.get("/getResInfo/:id", resController.getResInfo)
+app.get("/getResImages/:id", resController.getResImages)
+app.post("/addRestaurants", resController.postRestaurant)
+app.post("/uploadImages", resController.storeImage)
+app.get("/getResReviews/:id", reviewController.getResReviews)
+app.post("/addReviews", reviewController.postReview)
+app.put("/editReviews/:id", reviewController.editReview)
+app.delete("/deleteReviews/:id", reviewController.deleteReview)
+app.get("/getAllLikes", reviewController.getAllLikes)
+app.post("/likeReview", reviewController.likeReview)
+app.delete("/removeLike", reviewController.removeLike)
+app.get("/getAllUsers", userController.getAllUsers)
+app.get("/getUserInfo/:id", userController.getUserInfo)
+app.post("/login", userController.login)
+app.post("/addUsers", userController.postUser)
+app.post("/editProfile/:id", userController.editUser)
+app.post("/getResetLink", userController.getResetLink)
+app.put("/resetPassword/:id", userController.resetPassword)
+app.delete("/deleteUser/:id", userController.deleteUser)
+
+module.exports = app;
