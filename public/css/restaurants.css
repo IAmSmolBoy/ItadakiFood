@@ -29,6 +29,9 @@
     position: relative;
     width: 50%;
 }
+.resInfoLink:hover {
+    text-decoration: none;
+}
 .card-deck {
     margin-bottom: 10vh;
 }

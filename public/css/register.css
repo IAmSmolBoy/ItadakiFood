@@ -102,7 +102,7 @@ input::-webkit-input-placeholder {
 }
 .submitBtn:hover {
     color: white;
-    background-position: 0 -101%;
+    background-position: 0 -99%;
     cursor: pointer
 }
 .loginTag {

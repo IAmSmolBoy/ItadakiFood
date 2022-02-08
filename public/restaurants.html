@@ -23,12 +23,25 @@
 </head>
 <body class="body">
     <img src="https://assets.bonappetit.com/photos/610aa6ddc50e2f9f7c42f7f8/master/pass/Savage-2019-top-50-busy-restaurant.jpg" alt="background image" id="backgroundImg">
-    <div id="backgroundDim"></div>
     <div class="restaurantDim">
         <div class="gradient"></div>
         <div class="background"></div>
     </div>
-    <div w3-include-html="navbar.html"></div>
+    <div class="navbarContainer">
+        <div id="nav">
+            <nav id="navbar">
+                <ul id="navList">
+                    <li class="navItem left" id="restaurantsLi"><a href="restaurants.html" class="navLink" id="restaurants">Restaurants</a></li>
+                    <li class="navItem" id="register"><a href="register.html" class="navLink">Register</a></li>
+                    <li class="navItem" id="login"><a href="login.html" class="navLink">Sign In</a></li>
+                    <li class="navItem gone" id="profile"><a href="userInfo.html" class="navLink" id="profileLink"><div id="pfpContainerDiv"><div id="pfpContainer"><img id="pfp" src="assets/default pfp.png" alt="pfp"></div></div><span id="usernameProfileLink">Username</span></a></li>
+                    <li class="navItem gone" id="logOut"><a href="#" class="navLink" onclick="logOut()">Log Out</a></li>
+                </ul>
+            </nav>
+            <div id="navBackground"></div>
+        </div>
+        <a href="index.html" class="LogoLink"><h2 id="Logo"><span>Itadaki</span>Food</h2></a>
+    </div>
     <form class="searchDiv">
         <input type="text" class="searchbar" placeholder="Search for a restaurant">
         <a onclick="goToRestaurants()" class="searchBtn"><img src="assets/icons8-search-480.png"class="searchImg"></a>

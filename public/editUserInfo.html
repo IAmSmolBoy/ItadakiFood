@@ -23,10 +23,24 @@
     <script defer src="js/register.js"></script>
 </head>
 <body>
-    <img id="backgroundImg" src="https://img.wallpapersafari.com/desktop/1280/1024/71/43/WGP7OI.png" alt="background">
-    <div id="backgroundDim"></div>
-    <div class="navbarContainer" w3-include-html="navbar.html"></div>
+    <div id="backgroundContainer" w3-include-html="background.html"></div>
+    <div class="navbarContainer">
+        <div id="nav">
+            <nav id="navbar">
+                <ul id="navList">
+                    <li class="navItem left" id="restaurantsLi"><a href="restaurants.html" class="navLink" id="restaurants">Restaurants</a></li>
+                    <li class="navItem" id="register"><a href="register.html" class="navLink">Register</a></li>
+                    <li class="navItem" id="login"><a href="login.html" class="navLink">Sign In</a></li>
+                    <li class="navItem gone" id="profile"><a href="userInfo.html" class="navLink" id="profileLink"><div id="pfpContainerDiv"><div id="pfpContainer"><img id="pfp" src="assets/default pfp.png" alt="pfp"></div></div><span id="usernameProfileLink">Username</span></a></li>
+                    <li class="navItem gone" id="logOut"><a href="#" class="navLink" onclick="logOut()">Log Out</a></li>
+                </ul>
+            </nav>
+            <div id="navBackground"></div>
+        </div>
+        <a href="index.html" class="LogoLink"><h2 id="Logo"><span>Itadaki</span>Food</h2></a>
+    </div>
     <form action="/editProfile" method="post" enctype="multipart/form-data" class="userForm" id="ediProfileForm">
+        <input type="hidden" name="token" id="token">
         <div class="pfpUpload">
             <div class="pfpContainer">
                 <img src="./assets/default pfp.png" alt="pfpImg" class="pfpImg">

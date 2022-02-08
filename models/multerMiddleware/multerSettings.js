@@ -7,6 +7,8 @@ var usersDB = new UsersDB()
 const User = require("../user")
 const bcrypt = require("bcrypt")
 var db = require("../../db")
+const jwt = require("jsonwebtoken")
+var secret = ":)"
 function multerConfig (req, res, path, table) {
     var lastId, sql
     if (table === "res") {
@@ -50,15 +52,17 @@ function multerConfig (req, res, path, table) {
                         imageName = name.slice(0, dotIndex) + (lastId + 1) + name.slice(dotIndex)
                     }
                     if (table === "res") {
+                        console.log(imageName, name, dotIndex, req.body.resId)
                         resDB.addImages(req.body.resId, imageName, function (error, result) {
-                            if (error) res.json(error)
-                            else res.json(result)
+                            if (error) console.log(error)
+                            else res.send(`<script>window.location='resInfo.html?restaurant=${req.body.resId}'</script>`)
                         })
                     }
                     else if (table === "addUser") {
                         var user = new User(null, req.body.firstName, req.body.lastName, req.body.username, bcrypt.hashSync(req.body.password, 10), req.body.gender, req.body.address, req.body.email, req.body.number, imageName, 0)
                         usersDB.addUser(user, function (err, result) {
                             if (err) {
+                                console.log(err)
                                 if (err.errno === 1062) res.send(`<script>window.location='register.html?usernameTaken'</script>`)
                                 else console.log(err)
                             } 
@@ -66,13 +70,20 @@ function multerConfig (req, res, path, table) {
                         })
                     }
                     else if(table === "editUser") {
-                        var password;
-                        if (req.body.password) password = bcrypt.hashSync(req.body.password, 10)
-                        var user = new User(parseInt(req.params.id), req.body.firstName, req.body.lastName, req.body.username, password, req.body.gender, req.body.address, req.body.email, req.body.number, imageName, 0)
-                        usersDB.editUser(user, function (error, result) {
-                            if (error) console.log(error)
-                            else res.send("<script>window.location='../userInfo.html'</script>")
-                        })
+                        try {
+                            console.log(req.body)
+                            console.log(jwt.verify(req.body.token, secret))
+                            var password;
+                            if (req.body.password) password = bcrypt.hashSync(req.body.password, 10)
+                            var user = new User(parseInt(req.params.id), req.body.firstName, req.body.lastName, req.body.username, password, req.body.gender, req.body.address, req.body.email, req.body.number, imageName, 0)
+                            usersDB.editUser(user, function (error, result) {
+                                if (error) console.log(error)
+                                else res.send("<script>window.location='../userInfo.html'</script>")
+                            })
+                        }
+                        catch (err) {
+                            console.log(err)
+                        }
                     }
                 }
             })

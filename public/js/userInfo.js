@@ -9,11 +9,9 @@ function del() {
     var delUser = new XMLHttpRequest()
     delUser.open("delete", "/deleteUser/" + sessionStorage.getItem("userId"), true)
     delUser.setRequestHeader("Content-Type", "application/json")
-    delUser.onload = function () {
-        sessionStorage.clear()
-    }
     delUser.send(JSON.stringify({"pfp": sessionStorage.getItem("userPfp")}))
     window.location = "/restaurants.html"
+    sessionStorage.clear()
 }
 $("#delForm").submit(function (e) {
     e.preventDefault()

@@ -69,10 +69,10 @@ function resetPassword(req, respond) {
         var payload = jwt.verify(req.body.token, req.body.secret)
         usersDB.resetPassword(bcrypt.hashSync(req.body.newPass, 10), req.body._id, function (err, res) {
             if (err) console.log(err)
-            else respond.json(res)
+            else respond.send("Password has been reset. You may close this window now.")
         })
     } catch (error) {
-        console.log(error)
+        respond.send("Token unusable, please try again.")
     }
 }
 
@@ -86,8 +86,10 @@ function getResetLink(req, respond) {
                 to: res[0].email,
                 from: 'noreplyItadakiFood@gmail.com',
                 subject: 'Reset Password',
-                text: `This link will allow you to reset your password. If this was not you, ignore the link. http://127.0.0.1:8080/resetPassword.html?userId=${res[0]._id}&token=${token}`,
-                html: `<strong>This link will allow you to reset your password. If this was not you, ignore the link.<br><a href="http://127.0.0.1:8080/resetPassword.html?userId=${res[0]._id}&token=${token}">http://127.0.0.1:8080/resetPassword.html?userId=${res[0]._id}&token=${token}</a></strong>`
+                // text: `This link will allow you to reset your password. If this was not you, ignore the link. http://localhost:3000/resetPassword.html?userId=${res[0]._id}&token=${token}`,
+                // html: `<strong>This link will allow you to reset your password. If this was not you, ignore the link.<br><a href="http://localhost:3000/resetPassword.html?userId=${res[0]._id}&token=${token}">http://localhost:3000/resetPassword.html?userId=${res[0]._id}&token=${token}</a></strong>`
+                text: `This link will allow you to reset your password. If this was not you, ignore the link. https://itadakifood.azurewebsites.net/resetPassword.html?userId=${res[0]._id}&token=${token}`,
+                html: `<strong>This link will allow you to reset your password. If this was not you, ignore the link.<br><a href="https://itadakifood.azurewebsites.net/resetPassword.html?userId=${res[0]._id}&token=${token}">https://itadakifood.azurewebsites.net/resetPassword.html?userId=${res[0]._id}&token=${token}</a></strong>`
             }
             sgMail.send(msg)
                 .then(() => {

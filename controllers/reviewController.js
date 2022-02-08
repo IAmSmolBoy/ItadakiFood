@@ -26,14 +26,15 @@ function postReview(request, respond) {
 function editReview(request, respond) {
     var now = new Date().toISOString().slice(0, 19).replace('T', ' ');
     var review = new Review(parseInt(request.params.id), request.body.review, request.body.rating, now, request.body.title)
+    console.log(request.body)
     reviewsDB.editReview(review, function (error, result) {
         if (error) respond.json(error)
-        else respond.json(result)
+        else respond.send(`<script>window.location='/resInfo.html?restaurant=${request.body.restaurantId}'</script>`)
     })
 }
 function deleteReview(request, respond) {
     reviewsDB.deleteReview(request.params.id, function (error, result) {
-        if (error) respond.json(error)
+        if (error) console.log(error)
         else respond.json(result)
     })
 }
@@ -45,8 +46,8 @@ function getAllLikes(req, respond) {
 }
 function likeReview(req, respond) {
     reviewsDB.likeReview(req.body.reviewId, req.body.userId, function (err, res) {
-        if (err) respond.json(err)
-        else respond.json(res)
+        if (err) console.log(err)
+        else console.log(res)
     })
 }
 function removeLike(req, respond) {

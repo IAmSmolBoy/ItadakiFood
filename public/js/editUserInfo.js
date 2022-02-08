@@ -10,6 +10,7 @@ getUserInfo.onload = function () {
     $("#address").val(userInfo.address)
     $("#email").val(userInfo.email)
     $("#number").val(userInfo.mobile_number)
+    $("#token").val(sessionStorage.getItem("token"))
     if (userInfo.gender === "Male") document.getElementsByClassName("genderRadio")[0].checked = true
     else document.getElementsByClassName("genderRadio")[1].checked = true
 }

@@ -9,7 +9,7 @@ function displayRes(resList) {
                     <ul id="resList${resList[i]._id}" class="resList">
                         <li class="resInfo">Cuisine: ${resList[i].cuisine}</li>
                         <li class="resInfo">Operating Hours: ${resList[i].operating_hours}</li>
-                        <li class="resInfo">Average Rating: ${resList[i].rating}</li>
+                        <li class="resInfo">Base Rating: ${resList[i].rating}</li>
                     </ul>
                 </div>
             </div>`)

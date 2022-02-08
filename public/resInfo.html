@@ -12,6 +12,7 @@
     <link rel="manifest" href="./assets/site.webmanifest">
     <link rel="stylesheet" href="css/navbar.css">
     <link rel="stylesheet" href="./css/resInfo.css">
+    <script src="https://www.w3schools.com/lib/w3.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -19,10 +20,7 @@
     <script defer src="./js/navbar.js"></script>
 </head>
 <body>
-    <div id="backgroundContainer">
-        <img src="http://cdn.cnn.com/cnnnext/dam/assets/200120161356-cnn-worlds-best-new-restaurants---madera---simon-brown-photography-1-1.jpg" alt="background" id="background">
-        <div id="dim"></div>
-    </div>
+    <div id="backgroundContainer" w3-include-html="background.html"></div>
     <div class="navbarContainer">
         <div id="nav">
             <nav id="navbar">
@@ -39,8 +37,11 @@
         <a href="index.html" class="LogoLink"><h2 id="Logo"><span>Itadaki</span>Food</h2></a>
     </div>
     <main id="restaurantContents">
-        <section class="resSec" id="gallery">
-            <h2 id="noImages">Wow, Such Empty</h2>
+        <section id="gallerySec" class="resSec">
+            <div id="gallery">
+                <h2 id="noImages">Wow, Such Empty</h2>
+            </div>
+            <div id="addImgBtnDiv"><button class="btn btn-light" data-toggle="modal" data-target="#addImgModal" data-dismiss="modal" id="addImgBtn">Add an Image</button></div>
         </section>
         <section class="resSec" id="restaurantDetails">
             <h2 id="resName">Restaurant Name</h2>
@@ -50,11 +51,11 @@
         </section>
         <section id="ratingNLoc">
             <div id="stars">
-                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
-                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
-                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
-                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
-                <img src="./assets/icons8-star-96-white.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96.png" alt="star" class="starImg">
+                <img src="./assets/icons8-star-96.png" alt="star" class="starImg">
             </div>
             <div id="ratingNumContainer">
                 <h4 id="ratingNum"></h4>
@@ -98,20 +99,82 @@
             </div>
         </div>
     </div>
+    <div id="editComment" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Edit Review</h3>
+                    <button type="button" id="closeBtn" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body px-5">
+                    <form action="/editReviews" method="post" id="editCommentForm">
+                        <input id="resIdInput" type="hidden" name="restaurantId">
+                        <input type="text" class="reviewInput" placeholder="Title" name="title" required id="editTitle">
+                        <input type="text" class="reviewInput" placeholder="Review" name="review" required id="editReview">
+                        <div id="starRatingsNSubmit">
+                            <div id="editratingStarInputContainer"></div>
+                            <input type="submit" id="editCommentSubmit" class="btn btn-dark">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <div id="signInModal" class="modal fade" tabindex="-1">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Sign In</h5>
+                    <h5 id="signInTitle" class="modal-title">Sign In</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p>This function is only accessible when signed in.</p>
+                    <p id="signInBody">This function is only accessible when signed in.</p>
                 </div>
             </div>
         </div>
     </div>
+    <div id="addImgModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Add an Image</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div id="reviewModalBody" class="modal-body">
+                    <img alt="" id="previewImg">
+                    <form id="addImgForm" action="/uploadImages" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="resId" id="resIdUpload">
+                        <input type="file" name="image" id="uploadImgInput">
+                        <div id="uploadSubmitDiv">
+                            <input type="submit" id="uploadImgSubmit">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="delReviewModal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Confirm Delete Review</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this review? Once this is done, it cannot be undone.</p>
+                    <div id="delBtnDiv"><button class="btn btn-light" id="delBtn">Confirm</button></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>w3.includeHTML();</script>
 </body>
 </html>

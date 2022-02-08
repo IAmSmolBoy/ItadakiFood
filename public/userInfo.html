@@ -17,13 +17,26 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="https://www.w3schools.com/lib/w3.js"></script>
-    <script defer src="js/navbar.js"></script>
     <script defer src="js/userInfo.js"></script>
+    <script defer src="js/navbar.js"></script>
 </head>
 <body>
-    <img id="backgroundImg" src="https://img.wallpapersafari.com/desktop/1280/1024/71/43/WGP7OI.png" alt="background">
-    <div id="backgroundDim"></div>
-    <div class="navbarContainer" w3-include-html="navbar.html"></div>
+    <div id="backgroundContainer" w3-include-html="background.html"></div>
+    <div class="navbarContainer">
+        <div id="nav">
+            <nav id="navbar">
+                <ul id="navList">
+                    <li class="navItem left" id="restaurantsLi"><a href="restaurants.html" class="navLink" id="restaurants">Restaurants</a></li>
+                    <li class="navItem" id="register"><a href="register.html" class="navLink">Register</a></li>
+                    <li class="navItem" id="login"><a href="login.html" class="navLink">Sign In</a></li>
+                    <li class="navItem gone" id="profile"><a href="userInfo.html" class="navLink" id="profileLink"><div id="pfpContainerDiv"><div id="pfpContainer"><img id="pfp" src="assets/default pfp.png" alt="pfp"></div></div><span id="usernameProfileLink">Username</span></a></li>
+                    <li class="navItem gone" id="logOut"><a href="#" class="navLink" onclick="logOut()">Log Out</a></li>
+                </ul>
+            </nav>
+            <div id="navBackground"></div>
+        </div>
+        <a href="index.html" class="LogoLink"><h2 id="Logo"><span>Itadaki</span>Food</h2></a>
+    </div>
     <main id="userInfoContent">
         <h2 id="Hi">Hello there, </h2>
         <section id="profileInfoDisplay" >
